@@ -1,0 +1,37 @@
+# Training configuration for train.py. Paths may be absolute or relative to this file.
+data: armor_pose.yaml
+model: yolo26n-pose.pt
+resume: null
+device: auto # auto, cuda, or cpu
+
+output:
+  project: runs/pose
+  name: final_cuda_640_b16_20261007
+  exist_ok: false
+
+train:
+  epochs: 100 # 训练总轮数
+  patience: 30 # 早停
+  imgsz: 640 # 训练图像尺寸(正方形边长)
+  batch: 16 # 每个批次的样本数,显存不足时调小
+  workers: 4 # 数据加载的子进程数,Windows 下建议 0~8
+  fraction: 1.0 # 使用数据集的比例,1.0 表示使用全部数据
+  cache: false # 是否缓存图像
+  seed: 42 # 随机种子
+  deterministic: true # 是否启用确定性训练(会略微降低速度)
+  plots: true # 训练结束后是否绘制并保存指标曲线图
+  val: true # 训练过程中是否进行验证
+  save: true # 是否保存模型权重和训练检查点
+  verbose: true # 是否打印详细的训练日志
+  hsv_h: 0.015 # HSV 色调扰动幅度(数据增强)
+  hsv_s: 0.7 # HSV 饱和度
+  hsv_v: 0.4 # HSV 亮度
+  degrees: 0.0 # 随机旋转角度范围
+  translate: 0.1 # 随机平移比例(相对图像尺寸)
+  scale: 0.5 # 随机缩放比例(±),如 0.5 表示 0.5~1.5 倍
+  fliplr: 0.5 # 水平翻转概率
+  flipud: 0.0 # 垂直翻转概率
+  mosaic: 1.0 # Mosaic 增强概率(4 图拼接)
+  mixup: 0.0 # MixUp 增强概率(图像混合)
+  copy_paste: 0.0 # Copy-Paste 增强概率(复制实例粘贴)
+  close_mosaic: 10 # 最后 N 轮关闭 Mosaic 增强以稳定训练

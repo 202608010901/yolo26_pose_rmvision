@@ -1,0 +1,15 @@
+.venv/
+.venv-cuda/
+__pycache__/
+*.py[cod]
+*.cache
+.DS_Store
+
+## Local datasets, checkpoints, and generated run artifacts
+dataset/
+runs/
+outputs/
+output/
+tmp/
+weights/
+*.pt
