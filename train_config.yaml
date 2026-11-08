@@ -6,7 +6,7 @@ device: auto # auto, cuda, or cpu
 
 output:
   project: runs/pose
-  name: final_cuda_640_b16_20261007
+  name: final_cuda_640_b16_20261108
   exist_ok: false
 
 train:

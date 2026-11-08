@@ -13,3 +13,7 @@ output/
 tmp/
 weights/
 *.pt
+
+# 提交训练产出的最终权重（best/last）
+!weights/
+!weights/*.pt

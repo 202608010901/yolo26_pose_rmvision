@@ -111,14 +111,27 @@ Ultralytics 原生输出加本项目扩展：
 
 ## 已完成训练
 
-项目已完成一次 100 轮全量训练，运行名为 `final_cuda_640_b16_20261007`：640 输入、batch 16、patience 30、完整 train/val 划分，未触发早停。`best.pt` 全验证集复评指标：
+本次（2026-11-08）完成 100 轮全量训练，运行名 `final_cuda_640_b16_20261108`：640 输入、batch 16、patience 30，完整 train/val 划分（train 5636 张 / val 1409 张），未触发早停，GPU 为 RTX 5060 Laptop。`best.pt` 全验证集复评指标：
 
 | 项目 | Precision | Recall | mAP50 | mAP50–95 |
 | --- | ---: | ---: | ---: | ---: |
-| 装甲板框 | 93.79% | 90.78% | 95.20% | 67.70% |
-| 四角点 Pose | 86.09% | 83.89% | 83.30% | 76.47% |
+| 装甲板框 | 93.26% | 91.48% | 95.53% | 68.36% |
+| 四角点 Pose | 86.40% | 84.84% | 84.24% | 76.58% |
 
-详细报告见 `outputs/full_training/final_cuda_640_b16_20261007/training_report.md`。Pose mAP 使用关键点 OKS 评估，与框 IoU mAP 尺度不同，两者不可直接比较；本项目只有 train/val，没有独立测试集，以上均为验证集指标。
+Pose mAP 使用关键点 OKS 评估，与框 IoU mAP 尺度不同，两者不可直接比较；本项目只有 train/val，没有独立测试集，以上均为验证集指标。
+
+### 推理可视化（含置信度）
+
+![验证集预测 batch 0](docs/results/val_batch0_pred.jpg)
+![验证集预测 batch 1](docs/results/val_batch1_pred.jpg)
+![验证集预测 batch 2](docs/results/val_batch2_pred.jpg)
+
+### 训练曲线（loss 与 mAP）
+
+![训练曲线（原生）](docs/results/results.png)
+![训练曲线（loss / mAP）](docs/results/training_curves_custom.png)
+
+权重文件：`weights/best.pt`、`weights/last.pt`（已提交进本仓库，可直接下载使用）。
 
 ## 其他说明
 
